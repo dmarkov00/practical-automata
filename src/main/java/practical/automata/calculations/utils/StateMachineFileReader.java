@@ -4,9 +4,7 @@ import practical.automata.calculations.structures.StateMachine;
 
 import java.io.File;
 import java.io.FileNotFoundException;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Scanner;
+import java.util.*;
 
 public class StateMachineFileReader {
     private StateMachine stateMachine = new StateMachine();
@@ -15,34 +13,58 @@ public class StateMachineFileReader {
     public void readAutomataFile() {
 
         List<String> fileLines = generateListWithFileLines();
+        Map<String, List<String>> transitions = new HashMap<>();
 
-        for (String line : fileLines) {
-            if (line.contains("alphabet")) {
-                this.extractAlphabet(line);
+        for (int i = 0; i < fileLines.size() - 1; i++) {
+            if (fileLines.get(i).contains("alphabet")) {
+                this.extractAlphabet(fileLines.get(i));
 
-            } else if (line.contains("states")) {
-                List<String> states = this.extractStates(line);
+            } else if (fileLines.get(i).contains("states")) {
+                List<String> states = this.extractStates(fileLines.get(i));
                 stateMachine.setStates(states);
-            } else if (line.contains("final")) {
-                List<String> states = this.extractStates(line);
+            } else if (fileLines.get(i).contains("final")) {
+                List<String> states = this.extractStates(fileLines.get(i));
                 stateMachine.setFinalStates(states);
-            } else if (line.contains("transitions")) {
-                this.extractTransitions(line);
+            } else if (fileLines.get(i).contains("transitions")) {
+                int transitionsIndex = i + 1;
+                while (!fileLines.get(transitionsIndex).contains("end")) {
+                    Map<String, List<String>> transition = this.extractTransition(fileLines.get(transitionsIndex));
+                    transitions.putAll(transition);
+                    transitionsIndex++;
+                }
+                break;
             }
         }
+        stateMachine.setTransitions(transitions);
     }
 
-    private void extractTransitions(String line) {
-        String firstState;
-        String secondState;
-        String transitionSymbol;
+    private Map<String, List<String>> extractTransition(String line) {
+        String firstState = null;
+        String secondState = null;
+        String transitionSymbol = null;
 
+        Map<String, List<String>> transition = new HashMap<>();
 
-        for (char state : trimmedLine.toCharArray()) {
+        for (char symbol : line.toCharArray()) {
 
-            extractedStates.add(state + "");
+            if (Character.isUpperCase(symbol)) {
+                if (firstState == null) {
+                    firstState = symbol + "";
+
+                } else {
+                    secondState = symbol + "";
+                }
+            } else if (Character.isLowerCase(symbol) || symbol == '_') {
+                transitionSymbol = symbol + "";
+            }
         }
+        ArrayList<String> transitionStates = new ArrayList<String>();
+        transitionStates.add(firstState);
+        transitionStates.add(secondState);
 
+        transition.put(transitionSymbol, transitionStates);
+
+        return transition;
     }
 
 
