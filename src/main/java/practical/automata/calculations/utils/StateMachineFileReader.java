@@ -14,20 +14,35 @@ public class StateMachineFileReader {
 
     public void readAutomataFile() {
 
-
         List<String> fileLines = generateListWithFileLines();
-
 
         for (String line : fileLines) {
             if (line.contains("alphabet")) {
                 this.extractAlphabet(line);
 
             } else if (line.contains("states")) {
-                this.extractStates(line, "states");
+                List<String> states = this.extractStates(line);
+                stateMachine.setStates(states);
             } else if (line.contains("final")) {
-                this.extractStates(line, "final");
+                List<String> states = this.extractStates(line);
+                stateMachine.setFinalStates(states);
+            } else if (line.contains("transitions")) {
+                this.extractTransitions(line);
             }
         }
+    }
+
+    private void extractTransitions(String line) {
+        String firstState;
+        String secondState;
+        String transitionSymbol;
+
+
+        for (char state : trimmedLine.toCharArray()) {
+
+            extractedStates.add(state + "");
+        }
+
     }
 
 
@@ -37,17 +52,17 @@ public class StateMachineFileReader {
         stateMachine.setAlphabet(alphabet);
     }
 
-    private void extractStates(String line, String typeOfState) {
+    private List<String> extractStates(String line) {
         List<String> extractedStates = new ArrayList<>();
 
-        String trimmedLine = line.replace(typeOfState, "").replaceAll("[\\s:,+]", "");
+        for (char symbol : line.toCharArray()) {
 
-        for (char state : trimmedLine.toCharArray()) {
-
-            extractedStates.add(state + "");
+            if (Character.isUpperCase(symbol)) {
+                extractedStates.add(symbol + "");
+            }
         }
 
-        stateMachine.setStates(extractedStates);
+        return extractedStates;
     }
 
     private List<String> generateListWithFileLines() {
