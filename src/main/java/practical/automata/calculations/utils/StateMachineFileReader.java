@@ -1,6 +1,6 @@
 package practical.automata.calculations.utils;
 
-import practical.automata.calculations.structures.Automata;
+import practical.automata.calculations.structures.StateMachine;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -8,19 +8,30 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
-public class AutomataFileReader {
-    Automata automata = new Automata();
+public class StateMachineFileReader {
+    private StateMachine stateMachine = new StateMachine();
 
 
     public void readAutomataFile() {
+
+
         List<String> fileLines = generateListWithFileLines();
 
 
         for (String line : fileLines) {
-            if (line.contains("states")) {
+            if (line.contains("alphabet")) {
+                this.extractAlphabet(line);
+
+            } else if (line.contains("states")) {
                 this.extractStates(line);
             }
         }
+    }
+
+    private void extractAlphabet(String line) {
+        String alphabet = line.replace("alphabet", "").replaceAll("[\\s:+]", "");
+
+        stateMachine.setAlphabet(alphabet);
     }
 
     private void extractStates(String line) {
@@ -33,12 +44,12 @@ public class AutomataFileReader {
             extractedStates.add(state + "");
         }
 
-        automata.setStates(extractedStates);
+        stateMachine.setStates(extractedStates);
     }
 
     private List<String> generateListWithFileLines() {
 
-        String FILE_PATH = "./out/production/resources/dot-files/graph.dot";
+        String FILE_PATH = "./test.dot";
 
         Scanner sc = null;
         try {

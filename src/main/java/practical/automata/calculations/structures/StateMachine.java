@@ -3,7 +3,7 @@ package practical.automata.calculations.structures;
 import java.util.List;
 import java.util.Map;
 
-public class Automata {
+public class StateMachine {
     private String alphabet;
     private List<String> states;
     private List<String> final_states;
