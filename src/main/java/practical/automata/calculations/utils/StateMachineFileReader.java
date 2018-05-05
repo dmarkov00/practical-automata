@@ -23,10 +23,13 @@ public class StateMachineFileReader {
                 this.extractAlphabet(line);
 
             } else if (line.contains("states")) {
-                this.extractStates(line);
+                this.extractStates(line, "states");
+            } else if (line.contains("final")) {
+                this.extractStates(line, "final");
             }
         }
     }
+
 
     private void extractAlphabet(String line) {
         String alphabet = line.replace("alphabet", "").replaceAll("[\\s:+]", "");
@@ -34,10 +37,10 @@ public class StateMachineFileReader {
         stateMachine.setAlphabet(alphabet);
     }
 
-    private void extractStates(String line) {
+    private void extractStates(String line, String typeOfState) {
         List<String> extractedStates = new ArrayList<>();
 
-        String trimmedLine = line.replace("states", "").replaceAll("[\\s:,+]", "");
+        String trimmedLine = line.replace(typeOfState, "").replaceAll("[\\s:,+]", "");
 
         for (char state : trimmedLine.toCharArray()) {
 
