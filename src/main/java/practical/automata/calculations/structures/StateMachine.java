@@ -7,7 +7,7 @@ public class StateMachine {
     private String alphabet;
     private List<String> states;
     private List<String> final_states;
-    private Map<String, List<String>> transitions;
+    private List<Transition> transitions;
 
     public String getAlphabet() {
         return alphabet;
@@ -33,11 +33,11 @@ public class StateMachine {
         this.final_states = final_states;
     }
 
-    public Map<String, List<String>> getTransitions() {
+    public List<Transition> getTransitions() {
         return transitions;
     }
 
-    public void setTransitions(Map<String, List<String>> transitions) {
+    public void setTransitions(List<Transition> transitions) {
         this.transitions = transitions;
     }
 }
