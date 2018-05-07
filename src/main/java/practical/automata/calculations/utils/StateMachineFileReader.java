@@ -17,7 +17,7 @@ public class StateMachineFileReader {
     // Used to store the index of the line, and avoid repetitive looping
     private int lineIndex;
 
-    public void readAutomataFile() {
+    public AutomataFile readAutomataFile() {
 
         List<String> fileLines = generateListWithFileLines();
 
@@ -27,8 +27,7 @@ public class StateMachineFileReader {
         // Set the the data inside the TestVector object
         extractTestVectorData(fileLines);
 
-        AutomataFile automataFile = new AutomataFile(stateMachine, testVector);
-
+        return new AutomataFile(stateMachine, testVector);
     }
 
 
@@ -95,6 +94,24 @@ public class StateMachineFileReader {
     }
 
     private void extractTestVectorData(List<String> fileLines) {
+        int testVectorLineIndex = lineIndex + 1;
+
+        while (!fileLines.get(testVectorLineIndex).contains("end") && testVectorLineIndex < fileLines.size()) {
+            if (fileLines.get(testVectorLineIndex).contains("dfa")) {
+                this.extractDFA(fileLines.get(testVectorLineIndex));
+            }
+//            } else if (fileLines.get(testVectorLineIndex).contains("states")) {
+//                List<String> states = this.extractStates(fileLines.get(testVectorLineIndex));
+//                stateMachine.setStates(states);
+//
+//            } else if (fileLines.get(testVectorLineIndex).contains("final")) {
+//
+//
+//
+//            }
+            testVectorLineIndex++;
+
+        }
     }
 
     private void extractStateMachineData(List<String> fileLines) {
@@ -121,9 +138,17 @@ public class StateMachineFileReader {
                     transitions.add(transition);
                     transitionsIndex++;
                 }
+                // Making lineIndex the last looped index
+                lineIndex = transitionsIndex;
                 break;
             }
         }
         stateMachine.setTransitions(transitions);
+    }
+
+
+    private void extractDFA(String line) {
+        String DFA = line.substring(line.lastIndexOf(":") + 1).replaceAll("[\\s:+]", "");
+        testVector.setDFA(DFA);
     }
 }

@@ -4,23 +4,23 @@ import java.util.List;
 import java.util.Map;
 
 public class TestVector {
-    boolean DFA;
-    boolean finite;
-    List<Map<String, Boolean>> words;
+    private String DFA;
+    private String finite;
+    private List<Map<String, Boolean>> words;
 
-    public boolean isDFA() {
+    public String isDFA() {
         return DFA;
     }
 
-    public void setDFA(boolean DFA) {
+    public void setDFA(String DFA) {
         this.DFA = DFA;
     }
 
-    public boolean isFinite() {
+    public String isFinite() {
         return finite;
     }
 
-    public void setFinite(boolean finite) {
+    public void setFinite(String finite) {
         this.finite = finite;
     }
 
