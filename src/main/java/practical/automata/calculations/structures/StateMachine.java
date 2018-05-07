@@ -1,12 +1,11 @@
 package practical.automata.calculations.structures;
 
 import java.util.List;
-import java.util.Map;
 
 public class StateMachine {
     private String alphabet;
     private List<String> states;
-    private List<String> final_states;
+    private List<String> finalStates;
     private List<Transition> transitions;
 
     public String getAlphabet() {
@@ -26,11 +25,11 @@ public class StateMachine {
     }
 
     public List<String> getFinalStates() {
-        return final_states;
+        return finalStates;
     }
 
     public void setFinalStates(List<String> final_states) {
-        this.final_states = final_states;
+        this.finalStates = final_states;
     }
 
     public List<Transition> getTransitions() {

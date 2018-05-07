@@ -1,5 +1,8 @@
 package practical.automata.calculations.structures;
 
+/**
+ * Produced in as a result of parsing the state machine files .dot files
+ */
 public class AutomataFile {
     private StateMachine stateMachine;
     private TestVector testVector;

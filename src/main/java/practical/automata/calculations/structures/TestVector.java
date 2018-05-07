@@ -1,8 +1,10 @@
 package practical.automata.calculations.structures;
 
-import java.util.List;
 import java.util.Map;
 
+/**
+ * Stores a test vector data
+ */
 public class TestVector {
     private String DFA;
     private String finite;
