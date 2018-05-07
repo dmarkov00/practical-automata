@@ -1,6 +1,8 @@
 package practical.automata.calculations.utils;
 
+import practical.automata.calculations.structures.AutomataFile;
 import practical.automata.calculations.structures.StateMachine;
+import practical.automata.calculations.structures.TestVector;
 import practical.automata.calculations.structures.Transition;
 
 
@@ -10,7 +12,10 @@ import java.util.*;
 
 public class StateMachineFileReader {
     private StateMachine stateMachine = new StateMachine();
+    private TestVector testVector = new TestVector();
 
+    // Used to store the index of the line, and avoid repetitive looping
+    private int lineIndex;
 
     public void readAutomataFile() {
 
@@ -19,7 +24,13 @@ public class StateMachineFileReader {
         // Set the the data inside the StateMachine object
         extractStateMachineData(fileLines);
 
+        // Set the the data inside the TestVector object
+        extractTestVectorData(fileLines);
+
+        AutomataFile automataFile = new AutomataFile(stateMachine, testVector);
+
     }
+
 
     private Transition extractTransition(String line) {
         String stateOne = null;
@@ -83,9 +94,11 @@ public class StateMachineFileReader {
         return lines;
     }
 
+    private void extractTestVectorData(List<String> fileLines) {
+    }
+
     private void extractStateMachineData(List<String> fileLines) {
         List<Transition> transitions = new ArrayList<>();
-
 
         for (int i = 0; i < fileLines.size() - 1; i++) {
 
