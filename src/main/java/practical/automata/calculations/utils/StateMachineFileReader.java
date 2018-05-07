@@ -55,11 +55,6 @@ public class StateMachineFileReader {
     }
 
 
-    private void extractAlphabet(String line) {
-        String alphabet = line.replace("alphabet", "").replaceAll("[\\s:+]", "");
-
-        stateMachine.setAlphabet(alphabet);
-    }
 
     private List<String> extractStates(String line) {
         List<String> extractedStates = new ArrayList<>();
@@ -98,12 +93,13 @@ public class StateMachineFileReader {
 
         while (!fileLines.get(testVectorLineIndex).contains("end") && testVectorLineIndex < fileLines.size()) {
             if (fileLines.get(testVectorLineIndex).contains("dfa")) {
-                this.extractDFA(fileLines.get(testVectorLineIndex));
+
+                testVector.setDFA(extractValueAfterColon(fileLines.get(testVectorLineIndex)));
+
+            } else if (fileLines.get(testVectorLineIndex).contains("finite")) {
+                testVector.setFinite(extractValueAfterColon(fileLines.get(testVectorLineIndex)));
+
             }
-//            } else if (fileLines.get(testVectorLineIndex).contains("states")) {
-//                List<String> states = this.extractStates(fileLines.get(testVectorLineIndex));
-//                stateMachine.setStates(states);
-//
 //            } else if (fileLines.get(testVectorLineIndex).contains("final")) {
 //
 //
@@ -120,7 +116,7 @@ public class StateMachineFileReader {
         for (int i = 0; i < fileLines.size() - 1; i++) {
 
             if (fileLines.get(i).contains("alphabet")) {
-                this.extractAlphabet(fileLines.get(i));
+                stateMachine.setAlphabet(extractValueAfterColon(fileLines.get(i)));
 
             } else if (fileLines.get(i).contains("states")) {
                 List<String> states = this.extractStates(fileLines.get(i));
@@ -146,9 +142,13 @@ public class StateMachineFileReader {
         stateMachine.setTransitions(transitions);
     }
 
+    /**
+     * Gets the value after the ':' sign
+     */
+    private String extractValueAfterColon(String line) {
 
-    private void extractDFA(String line) {
-        String DFA = line.substring(line.lastIndexOf(":") + 1).replaceAll("[\\s:+]", "");
-        testVector.setDFA(DFA);
+        return line.substring(line.lastIndexOf(":") + 1).replaceAll("[\\s:+]", "");
     }
+
+
 }
