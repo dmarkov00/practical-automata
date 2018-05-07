@@ -6,7 +6,7 @@ import java.util.Map;
 public class TestVector {
     private String DFA;
     private String finite;
-    private List<Map<String, Boolean>> words;
+    private Map<String, String> words;
 
     public String isDFA() {
         return DFA;
@@ -24,11 +24,11 @@ public class TestVector {
         this.finite = finite;
     }
 
-    public List<Map<String, Boolean>> getWords() {
+    public Map<String, String> getWords() {
         return words;
     }
 
-    public void setWords(List<Map<String, Boolean>> words) {
+    public void setWords(Map<String, String> words) {
         this.words = words;
     }
 }

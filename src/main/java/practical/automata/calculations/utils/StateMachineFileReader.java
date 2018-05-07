@@ -55,7 +55,6 @@ public class StateMachineFileReader {
     }
 
 
-
     private List<String> extractStates(String line) {
         List<String> extractedStates = new ArrayList<>();
 
@@ -89,9 +88,13 @@ public class StateMachineFileReader {
     }
 
     private void extractTestVectorData(List<String> fileLines) {
+
+        Map<String, String> wordAndResultMap = new HashMap<>();
+
         int testVectorLineIndex = lineIndex + 1;
 
         while (!fileLines.get(testVectorLineIndex).contains("end") && testVectorLineIndex < fileLines.size()) {
+
             if (fileLines.get(testVectorLineIndex).contains("dfa")) {
 
                 testVector.setDFA(extractValueAfterColon(fileLines.get(testVectorLineIndex)));
@@ -99,15 +102,16 @@ public class StateMachineFileReader {
             } else if (fileLines.get(testVectorLineIndex).contains("finite")) {
                 testVector.setFinite(extractValueAfterColon(fileLines.get(testVectorLineIndex)));
 
+                // If the line contains a come it means that is part of words in the test vectors
+            } else if (fileLines.get(testVectorLineIndex).contains(",")) {
+                String wordAndResultArray[] = fileLines.get(testVectorLineIndex).split(",");
+                wordAndResultMap.put(wordAndResultArray[0], wordAndResultArray[1]);
+
             }
-//            } else if (fileLines.get(testVectorLineIndex).contains("final")) {
-//
-//
-//
-//            }
             testVectorLineIndex++;
 
         }
+        testVector.setWords(wordAndResultMap);
     }
 
     private void extractStateMachineData(List<String> fileLines) {
