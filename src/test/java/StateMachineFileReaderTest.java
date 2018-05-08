@@ -1,4 +1,5 @@
 import static org.junit.Assert.*;
+
 import org.junit.Test;
 import practical.automata.calculations.structures.AutomataFile;
 import practical.automata.calculations.structures.StateMachine;
@@ -42,13 +43,15 @@ public class StateMachineFileReaderTest {
         assertThat(stateMachine.getFinalStates(), is(finalStatesList));
 
         // Test for correctly retrieved transitions
-        List<Transition> transitionsStub = Arrays.asList(new Transition("a", "Z", "А"),
-                new Transition("b", "Z", "B"),
-                new Transition("_", "Z", "B"),
-                new Transition("b", "B", "B"));
+        // In this case randomly selected 2nd transition
+
+        Transition transitionStub = new Transition("b", "Z", "B");
+
         List<Transition> transitions = stateMachine.getTransitions();
 
-        assertThat(transitions, is(transitionsStub));
+        assertThat(transitions.get(1).getTransitionSymbol(), is(transitionStub.getTransitionSymbol()));
+        assertThat(transitions.get(1).getStateOne(), is(transitionStub.getStateOne()));
+        assertThat(transitions.get(1).getStateTwo(), is(transitionStub.getStateTwo()));
 
         // Test test vector
         TestVector testVector = automataFile.getTestVector();
