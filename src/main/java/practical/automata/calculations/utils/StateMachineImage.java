@@ -20,7 +20,7 @@ public class StateMachineImage {
         List<String> lines = new ArrayList<>();
         lines.add("digraph myAutomaton {");
         lines.add("rankdir=LR;");
-        lines.add("  \"\" [shape=none]\n");
+        lines.add("\"\" [shape=none]\n");
 
         for (String state : stateMachine.getStates()) {
             if (stateMachine.getFinalStates().contains(state)) {
@@ -30,14 +30,14 @@ public class StateMachineImage {
                 circleOutline = "circle";
             }
 
-            lines.add("\"" + state + "\"" + "[shape=" + circleOutline + "]");
+            lines.add("\"" + state + "\""+ " [shape=" + circleOutline + "]");
         }
         // Add the initial the first initial state
-        lines.add("\"\" -> " + "\"" + stateMachine.getStates().get(0) + " \" ");
+        lines.add("\"\" -> " + "\"" + stateMachine.getStates().get(0) + "\"");
 
         for (Transition transition : stateMachine.getTransitions()) {
-            lines.add("\"" + transition.getStateOne() + " \" -> " + "\"" + transition.getStateTwo() + " \" "
-                    + "[label=" + "\"" + transition.getTransitionSymbol() + " \"] ");
+            lines.add("\"" + transition.getStateOne() + "\" -> " + "\"" + transition.getStateTwo() + "\""
+                    + "[label=" + "\"" + transition.getTransitionSymbol() + "\"] ");
 
         }
 

@@ -1,0 +1,15 @@
+digraph myAutomaton {
+rankdir=LR;
+"" [shape=none]
+
+"Z" [shape=circle]
+"A" [shape=circle]
+"B" [shape=doublecircle]
+"" -> "Z"
+"Z" -> "A"[label="a"] 
+"Z" -> "Z"[label="b"] 
+"A" -> "Z"[label="b"] 
+"A" -> "B"[label="a"] 
+"B" -> "B"[label="b"] 
+"B" -> "Z"[label="a"] 
+}
