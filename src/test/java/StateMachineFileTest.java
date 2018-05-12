@@ -5,7 +5,7 @@ import practical.automata.calculations.structures.AutomataFile;
 import practical.automata.calculations.structures.StateMachine;
 import practical.automata.calculations.structures.TestVector;
 import practical.automata.calculations.structures.Transition;
-import practical.automata.calculations.utils.StateMachineFileReader;
+import practical.automata.calculations.utils.StateMachineFile;
 
 import java.util.Arrays;
 import java.util.HashMap;
@@ -14,7 +14,7 @@ import java.util.Map;
 
 import static org.hamcrest.CoreMatchers.is;
 
-public class StateMachineFileReaderTest {
+public class StateMachineFileTest {
 
     /**
      * TODO: When you setup the file sending via the api endpoint - mock it with files contained in the test resources
@@ -24,9 +24,9 @@ public class StateMachineFileReaderTest {
     @Test
     public void readAutomataFile() {
 
-        StateMachineFileReader stateMachineFileReader = new StateMachineFileReader();
+        StateMachineFile stateMachineFile = new StateMachineFile();
 
-        AutomataFile automataFile = stateMachineFileReader.readAutomataFile();
+        AutomataFile automataFile = stateMachineFile.readAutomataFile();
 
         // Test state machine
         StateMachine stateMachine = automataFile.getStateMachine();

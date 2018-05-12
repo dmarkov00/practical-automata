@@ -1,9 +1,7 @@
-import static org.junit.Assert.*;
-
 import org.junit.Test;
 import practical.automata.calculations.structures.AutomataFile;
 import practical.automata.calculations.structures.StateMachine;
-import practical.automata.calculations.utils.StateMachineFileReader;
+import practical.automata.calculations.utils.StateMachineFile;
 
 import static org.hamcrest.CoreMatchers.is;
 
@@ -13,9 +11,9 @@ public class StateMachineTest {
     @Test
     public void checkForDFA() {
 
-        StateMachineFileReader stateMachineFileReader = new StateMachineFileReader();
+        StateMachineFile stateMachineFile = new StateMachineFile();
 
-        AutomataFile automataFile = stateMachineFileReader.readAutomataFile();
+        AutomataFile automataFile = stateMachineFile.readAutomataFile();
 
         StateMachine stateMachine = automataFile.getStateMachine();
 
