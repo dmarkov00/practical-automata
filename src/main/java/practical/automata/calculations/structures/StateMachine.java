@@ -113,13 +113,26 @@ public class StateMachine {
         if (focusSymbolIndex == wordChars.size() - 1 && getFinalStates().contains(focusTransition.getStateTwo())) {
             return true;
         }
+        if (focusSymbolIndex == wordChars.size() - 1 && !getFinalStates().contains(focusTransition.getStateTwo())){
+            return false;
+        }
 
         for (Transition transition : getTransitions()) {
             if (focusSymbolIndex < wordChars.size() && focusTransition.getStateTwo().equals(transition.getStateOne())
                     && transition.getTransitionSymbol().equals(wordChars.get(focusSymbolIndex))) {
 
                 focusTransition = transition;
-                focusSymbolIndex++;
+
+                if (focusTransition.getStateOne().equals(focusTransition.getStateTwo())) {
+                    while (focusSymbolIndex != wordChars.size() - 1 && wordChars.get(focusSymbolIndex).equals(focusTransition.getTransitionSymbol())) {
+                        focusSymbolIndex++;
+                    }
+                } else {
+                    focusSymbolIndex++;
+
+                }
+
+
                 return evaluateWord(focusTransition, focusSymbolIndex);
             }
         }
