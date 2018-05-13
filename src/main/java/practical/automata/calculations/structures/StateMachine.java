@@ -107,6 +107,7 @@ public class StateMachine {
         return startingTransitions;
     }
 
+
     private boolean evaluateWord(Transition focusTransition, int focusSymbolIndex) {
 
         if (focusSymbolIndex == wordChars.size() - 1 && getFinalStates().contains(focusTransition.getStateTwo())) {
@@ -114,7 +115,7 @@ public class StateMachine {
         }
 
         for (Transition transition : getTransitions()) {
-            if (focusTransition.getStateTwo().equals(transition.getStateOne())
+            if (focusSymbolIndex < wordChars.size() && focusTransition.getStateTwo().equals(transition.getStateOne())
                     && transition.getTransitionSymbol().equals(wordChars.get(focusSymbolIndex))) {
 
                 focusTransition = transition;
