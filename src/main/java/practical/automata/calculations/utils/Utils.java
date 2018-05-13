@@ -12,14 +12,14 @@ public class Utils {
     /**
      * Generates a list of of alphabet letters
      */
-    public static List<String> splitAlphabetStringIntoList(String alphabet) {
-        List<String> alphabetList = new ArrayList<>();
+    public static List<String> convertStringToListOfStringCharacters(String stringWord) {
+        List<String> characterList = new ArrayList<>();
 
-        for (int i = 0; i < alphabet.toCharArray().length; i++) {
-            alphabetList.add(alphabet.toCharArray()[i] + "");
+        for (int i = 0; i < stringWord.toCharArray().length; i++) {
+            characterList.add(stringWord.toCharArray()[i] + "");
 
         }
 
-        return alphabetList;
+        return characterList;
     }
 }

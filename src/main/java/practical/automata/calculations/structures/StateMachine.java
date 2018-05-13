@@ -10,6 +10,7 @@ public class StateMachine {
     private List<String> states;
     private List<String> finalStates;
     private List<Transition> transitions;
+    private List<String> wordChars;
 
     public String getAlphabet() {
         return alphabet;
@@ -47,12 +48,12 @@ public class StateMachine {
 
         List<String> uniqueTransitions = new ArrayList<>();
 
-        List<String> alphabet = Utils.splitAlphabetStringIntoList(this.alphabet);
+        List<String> alphabet = Utils.convertStringToListOfStringCharacters(this.alphabet);
 
         boolean isDFA = false;
 
         for (String state : states) {
-            for (Transition transition : transitions) {
+            for (Transition transition : getTransitions()) {
                 if (state.equals(transition.getStateOne())) {
 
                     // If there is an epsilon transition the state machine is not a DFA
@@ -76,4 +77,53 @@ public class StateMachine {
 
         return isDFA;
     }
+
+    public boolean isWordAccepted(String inputWordChars) {
+
+        this.wordChars = Utils.convertStringToListOfStringCharacters(inputWordChars);
+
+
+        List<Transition> startingTransactions = this.startingTransactions();
+
+//        int focusSymbolIndex = 0;
+        for (Transition startingTransaction : startingTransactions) {
+
+            boolean isAccepted = evaluateWord(startingTransaction, 0);
+
+            if (isAccepted) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    private List<Transition> startingTransactions() {
+        List<Transition> startingTransactions = new ArrayList<>();
+        for (Transition transition : getTransitions()) {
+            if (transition.getStateOne().equals(states.get(0))) {
+                startingTransactions.add(transition);
+            }
+        }
+        return startingTransactions;
+    }
+
+    private boolean evaluateWord(Transition focusTransaction, int focusSymbolIndex) {
+
+        if (focusSymbolIndex == wordChars.size() - 1 && getFinalStates().contains(focusTransaction.getStateTwo())) {
+            return true;
+        }
+
+        for (Transition transition : getTransitions()) {
+            if (focusTransaction.getStateTwo().equals(transition.getStateOne())
+                    && focusTransaction.getTransitionSymbol().equals(wordChars.get(focusSymbolIndex))) {
+
+                focusTransaction = transition;
+                focusSymbolIndex++;
+                evaluateWord(focusTransaction, focusSymbolIndex);
+            }
+        }
+        return false;
+
+    }
+
 }
