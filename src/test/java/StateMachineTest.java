@@ -20,4 +20,18 @@ public class StateMachineTest {
         boolean isDFA = stateMachine.checkForDFA();
 
     }
+
+    @Test
+    public void isWordAccepted() {
+        StateMachineFile stateMachineFile = new StateMachineFile();
+
+        AutomataFile automataFile = stateMachineFile.readAutomataFile();
+
+        StateMachine stateMachine = automataFile.getStateMachine();
+
+        String testWord = "aa";
+
+        boolean isAccepted = stateMachine.isWordAccepted(testWord);
+
+x    }
 }

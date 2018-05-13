@@ -83,7 +83,7 @@ public class StateMachine {
         this.wordChars = Utils.convertStringToListOfStringCharacters(inputWordChars);
 
 
-        List<Transition> startingTransactions = this.startingTransactions();
+        List<Transition> startingTransactions = this.startingTransitions();
 
 //        int focusSymbolIndex = 0;
         for (Transition startingTransaction : startingTransactions) {
@@ -97,14 +97,14 @@ public class StateMachine {
         return false;
     }
 
-    private List<Transition> startingTransactions() {
-        List<Transition> startingTransactions = new ArrayList<>();
+    private List<Transition> startingTransitions() {
+        List<Transition> startingTransitions = new ArrayList<>();
         for (Transition transition : getTransitions()) {
-            if (transition.getStateOne().equals(states.get(0))) {
-                startingTransactions.add(transition);
+            if (transition.getStateOne().equals(getStates().get(0))) {
+                startingTransitions.add(transition);
             }
         }
-        return startingTransactions;
+        return startingTransitions;
     }
 
     private boolean evaluateWord(Transition focusTransaction, int focusSymbolIndex) {

@@ -25,7 +25,7 @@ public class StateMachineFile {
         extractStateMachineData(fileLines);
 
         // Set the the data inside the TestVector object
-        extractTestVectorData(fileLines);
+//        extractTestVectorData(fileLines);
 
         return new AutomataFile(stateMachine, testVector);
     }
@@ -70,7 +70,7 @@ public class StateMachineFile {
 
     private List<String> generateListWithFileLines() {
 
-        String FILE_PATH = "./test.dot";
+        String FILE_PATH = "./test.txt";
 
         Scanner sc = null;
         try {

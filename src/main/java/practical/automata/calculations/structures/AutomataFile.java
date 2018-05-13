@@ -1,7 +1,7 @@
 package practical.automata.calculations.structures;
 
 /**
- * Produced in as a result of parsing the state machine files .dot files
+ * Produced in as a result of parsing the state machine files
  */
 public class AutomataFile {
     private StateMachine stateMachine;

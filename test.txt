@@ -1,5 +1,3 @@
-# automaton for regular expression (a|b)*
-
 alphabet: ab
 states: Z,A,B
 final: B
@@ -10,15 +8,4 @@ A,b --> Z
 A,a --> B
 B,b --> B
 B,a --> Z
-end.
-
-# test vector
-
-dfa:n
-finite:n
-
-words:
-bbbbbbbbbb,y
-a,y
-ab,n
 end.
