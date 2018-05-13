@@ -29,9 +29,9 @@ public class StateMachineTest {
 
         StateMachine stateMachine = automataFile.getStateMachine();
 
-        String testWord = "aa";
+        String testWord = "aab";
 
         boolean isAccepted = stateMachine.isWordAccepted(testWord);
 
-x    }
+    }
 }

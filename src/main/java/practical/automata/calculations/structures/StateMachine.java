@@ -107,19 +107,19 @@ public class StateMachine {
         return startingTransitions;
     }
 
-    private boolean evaluateWord(Transition focusTransaction, int focusSymbolIndex) {
+    private boolean evaluateWord(Transition focusTransition, int focusSymbolIndex) {
 
-        if (focusSymbolIndex == wordChars.size() - 1 && getFinalStates().contains(focusTransaction.getStateTwo())) {
+        if (focusSymbolIndex == wordChars.size() - 1 && getFinalStates().contains(focusTransition.getStateTwo())) {
             return true;
         }
 
         for (Transition transition : getTransitions()) {
-            if (focusTransaction.getStateTwo().equals(transition.getStateOne())
-                    && focusTransaction.getTransitionSymbol().equals(wordChars.get(focusSymbolIndex))) {
+            if (focusTransition.getStateTwo().equals(transition.getStateOne())
+                    && transition.getTransitionSymbol().equals(wordChars.get(focusSymbolIndex))) {
 
-                focusTransaction = transition;
+                focusTransition = transition;
                 focusSymbolIndex++;
-                evaluateWord(focusTransaction, focusSymbolIndex);
+                return evaluateWord(focusTransition, focusSymbolIndex);
             }
         }
         return false;
