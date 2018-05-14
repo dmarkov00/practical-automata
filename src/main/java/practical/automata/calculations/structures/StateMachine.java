@@ -119,8 +119,9 @@ public class StateMachine {
         }
 
         for (Transition transition : getTransitions()) {
-            if (focusSymbolIndex < wordChars.size() && (focusTransition.getStateTwo().equals(transition.getStateOne())
-                    || focusTransition.getStateTwo().equals(transition.getStateTwo()))
+            if (focusSymbolIndex < wordChars.size()
+                    && (focusTransition.getStateTwo().equals(transition.getStateOne())
+                    || areTransactionsLooping(focusTransition, transition))
                     && !this.areTransitionsIdentical(focusTransition, transition)
                     && transition.getTransitionSymbol().equals(wordChars.get(focusSymbolIndex))) {
 
@@ -141,6 +142,11 @@ public class StateMachine {
         }
         return false;
 
+    }
+
+    private boolean areTransactionsLooping(Transition transOne, Transition transTwo) {
+        return transOne.getStateOne().equals(transTwo.getStateOne()) && transOne.getStateTwo().equals(transTwo.getStateTwo()) &&
+                !transOne.getTransitionSymbol().equals(transTwo.getTransitionSymbol());
     }
 
     private boolean areTransitionsIdentical(Transition transOne, Transition transTwo) {
