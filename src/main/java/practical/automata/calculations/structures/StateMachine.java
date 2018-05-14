@@ -113,12 +113,15 @@ public class StateMachine {
         if (focusSymbolIndex == wordChars.size() - 1 && getFinalStates().contains(focusTransition.getStateTwo())) {
             return true;
         }
-        if (focusSymbolIndex == wordChars.size() - 1 && !getFinalStates().contains(focusTransition.getStateTwo())){
+        // When we get the right amount of symbols but the last state is not final
+        if (focusSymbolIndex == wordChars.size() - 1 && !getFinalStates().contains(focusTransition.getStateTwo())) {
             return false;
         }
 
         for (Transition transition : getTransitions()) {
-            if (focusSymbolIndex < wordChars.size() && focusTransition.getStateTwo().equals(transition.getStateOne())
+            if (focusSymbolIndex < wordChars.size() && (focusTransition.getStateTwo().equals(transition.getStateOne())
+                    || focusTransition.getStateTwo().equals(transition.getStateTwo()))
+                    && !this.areTransitionsIdentical(focusTransition, transition)
                     && transition.getTransitionSymbol().equals(wordChars.get(focusSymbolIndex))) {
 
                 focusTransition = transition;
@@ -138,6 +141,13 @@ public class StateMachine {
         }
         return false;
 
+    }
+
+    private boolean areTransitionsIdentical(Transition transOne, Transition transTwo) {
+
+        return transOne.getStateOne().equals(transTwo.getStateOne())
+                && transOne.getStateTwo().equals(transTwo.getStateTwo())
+                && transOne.getTransitionSymbol().equals(transTwo.getTransitionSymbol());
     }
 
 }

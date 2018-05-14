@@ -29,7 +29,7 @@ public class StateMachineTest {
 
         StateMachine stateMachine = automataFile.getStateMachine();
 
-        String testWord = "abaa";
+        String testWord = "aabbba";
 
         boolean isAccepted = stateMachine.isWordAccepted(testWord);
 
