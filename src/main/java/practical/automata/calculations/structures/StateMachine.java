@@ -78,22 +78,17 @@ public class StateMachine {
         return isDFA;
     }
 
-    public boolean isWordAccepted(String inputWordChars) {
 
-        this.wordChars = Utils.convertStringToListOfStringCharacters(inputWordChars);
-
-
-//
-
-//        boolean isAccepted = evaluateWord(startingTransaction, 0);
-
-        return isAccepted;
-    }
+    public boolean isWordAccepted(String inputWord) {
 
 
-    private boolean evaluateWord() {
+        StringBuilder word = new StringBuilder(inputWord);
+
+
+
 
         return false;
+
     }
 
 
