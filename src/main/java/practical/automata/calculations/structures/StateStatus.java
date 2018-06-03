@@ -6,29 +6,26 @@ package practical.automata.calculations.structures;
 public class StateStatus {
     private String state;
     private int transitionIndex;
-    private int word;
+    private StringBuilder word;
+
+    StateStatus(String state, int transitionIndex, StringBuilder word) {
+        this.state = state;
+        this.transitionIndex = transitionIndex;
+        this.word = word;
+    }
 
     public String getState() {
         return state;
     }
 
-    public void setState(String state) {
-        this.state = state;
-    }
 
     public int getTransitionIndex() {
         return transitionIndex;
     }
 
-    public void setTransitionIndex(int transitionIndex) {
-        this.transitionIndex = transitionIndex;
-    }
 
-    public int getWord() {
+    public StringBuilder getWord() {
         return word;
     }
 
-    public void setWord(int word) {
-        this.word = word;
-    }
 }
