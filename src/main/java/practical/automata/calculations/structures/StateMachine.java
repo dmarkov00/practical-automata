@@ -83,77 +83,18 @@ public class StateMachine {
         this.wordChars = Utils.convertStringToListOfStringCharacters(inputWordChars);
 
 
-        List<Transition> startingTransactions = this.startingTransitions();
+//
 
-//        int focusSymbolIndex = 0;
-        for (Transition startingTransaction : startingTransactions) {
+//        boolean isAccepted = evaluateWord(startingTransaction, 0);
 
-            boolean isAccepted = evaluateWord(startingTransaction, 0);
+        return isAccepted;
+    }
 
-            if (isAccepted) {
-                return true;
-            }
-        }
+
+    private boolean evaluateWord() {
+
         return false;
     }
 
-    private List<Transition> startingTransitions() {
-        List<Transition> startingTransitions = new ArrayList<>();
-        for (Transition transition : getTransitions()) {
-            if (transition.getStateOne().equals(getStates().get(0))) {
-                startingTransitions.add(transition);
-            }
-        }
-        return startingTransitions;
-    }
-
-
-    private boolean evaluateWord(Transition focusTransition, int focusSymbolIndex) {
-
-        if (focusSymbolIndex == wordChars.size() - 1 && getFinalStates().contains(focusTransition.getStateTwo())) {
-            return true;
-        }
-        // When we get the right amount of symbols but the last state is not final
-        if (focusSymbolIndex == wordChars.size() - 1 && !getFinalStates().contains(focusTransition.getStateTwo())) {
-            return false;
-        }
-
-        for (Transition transition : getTransitions()) {
-            if (focusSymbolIndex < wordChars.size()
-                    && (focusTransition.getStateTwo().equals(transition.getStateOne())
-                    || areTransactionsLooping(focusTransition, transition))
-                    && !this.areTransitionsIdentical(focusTransition, transition)
-                    && transition.getTransitionSymbol().equals(wordChars.get(focusSymbolIndex))) {
-
-                focusTransition = transition;
-
-                if (focusTransition.getStateOne().equals(focusTransition.getStateTwo())) {
-                    while (focusSymbolIndex != wordChars.size() - 1 && wordChars.get(focusSymbolIndex).equals(focusTransition.getTransitionSymbol())) {
-                        focusSymbolIndex++;
-                    }
-                } else {
-                    focusSymbolIndex++;
-
-                }
-
-
-                return evaluateWord(focusTransition, focusSymbolIndex);
-            }
-        }
-        return false;
-
-    }
-
-    private boolean areTransactionsLooping(Transition transOne, Transition transTwo) {
-        return transOne.getStateOne().equals(transTwo.getStateOne()) && transOne.getStateTwo().equals(transTwo.getStateTwo()) &&
-                !transOne.getTransitionSymbol().equals(transTwo.getTransitionSymbol());
-    }
-
-    private boolean areTransitionsIdentical(Transition transOne, Transition transTwo) {
-
-        return transOne.getStateOne().equals(transTwo.getStateOne())
-                && transOne.getStateTwo().equals(transTwo.getStateTwo())
-                && transOne.getTransitionSymbol().equals(transTwo.getTransitionSymbol());
-    }
 
 }

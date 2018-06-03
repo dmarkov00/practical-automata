@@ -10,7 +10,7 @@ public class Utils {
 
 
     /**
-     * Generates a list of of alphabet letters
+     * Generates a list of alphabet letters
      */
     public static List<String> convertStringToListOfStringCharacters(String stringWord) {
         List<String> characterList = new ArrayList<>();
