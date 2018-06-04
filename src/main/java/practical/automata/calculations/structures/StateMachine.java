@@ -102,6 +102,10 @@ public class StateMachine {
 
             if ((word.charAt(0) + "").equals(transition.getTransitionSymbol()) && focusState.equals(transition.getStateOne())) {
 
+//                if(transition.getStateOne().equals(transition.getStateTwo())){
+//
+//                }
+
                 // Save the current state for going back, if needed
                 StateStatus stateStatus = new StateStatus(focusState, currentTransitionIndex + 1, new StringBuilder(word));
                 previousStates.push(stateStatus);
