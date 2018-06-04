@@ -78,52 +78,75 @@ public class StateMachine {
         return isDFA;
     }
 
+    private Stack<StateStatus> previousStates = new Stack<>();
+
+
+    // We start looping from the first state
+    private String focusState;
+
+    private StringBuilder word;
+
+    private int currentTransitionIndex = 0;
 
     public boolean isWordAccepted(String inputWord) {
 
-        Stack<StateStatus> previousStates = new Stack<>();
+        focusState = getStates().get(0);
 
+        int transitionsCount = getTransitions().size();
 
-        // We start looping from the first state
-        String focusState = getStates().get(0);
+        word = new StringBuilder(inputWord);
 
-        StringBuilder word = new StringBuilder(inputWord);
+        while (currentTransitionIndex < transitionsCount) {
 
-        int currentIndex = 0;
-        while (currentIndex < getTransitions().size()) {
-            if (word.length() == 0 && getFinalStates().contains(focusState)) {
-                return true;
-            }
-            Transition transition = getTransitions().get(currentIndex);
+            Transition transition = getTransitions().get(currentTransitionIndex);
 
             if ((word.charAt(0) + "").equals(transition.getTransitionSymbol()) && focusState.equals(transition.getStateOne())) {
 
-                // Save the current state, going back in to previous states in needed
-                StateStatus stateStatus = new StateStatus(focusState, currentIndex, word);
+                // Save the current state for going back, if needed
+                StateStatus stateStatus = new StateStatus(focusState, currentTransitionIndex + 1, new StringBuilder(word));
                 previousStates.push(stateStatus);
 
-                // Update the current state
+                // Update the current state with new state
                 focusState = transition.getStateTwo();
 
                 // Remove a character from the word
                 word.deleteCharAt(0);
 
+                currentTransitionIndex = 0;
+
+                if (word.length() == 0 && getFinalStates().contains(focusState)) {
+                    return true;
+                } else if (word.length() == 0 && !getFinalStates().contains(focusState)) {
+                    goOneStateBack();
+
+                }
+                continue;
+
             }
-            currentIndex++;
+            currentTransitionIndex++;
 
             // Going one state back
-            if (currentIndex == getTransitions().size()) {
-                StateStatus stateStatus = previousStates.pop();
+            // If we checked all transition and could find a path to continue
+            if ((currentTransitionIndex == transitionsCount)) {
+                goOneStateBack();
 
-                focusState = stateStatus.getState();
-                currentIndex = stateStatus.getTransitionIndex();
-                word = stateStatus.getWord();
             }
 
         }
 
         return false;
 
+    }
+
+    private void goOneStateBack() {
+        if (previousStates.empty()) {
+            return;
+        }
+        StateStatus previousState = previousStates.pop();
+
+        focusState = previousState.getState();
+        currentTransitionIndex = previousState.getTransitionIndex();
+        word = previousState.getWord();
     }
 
 
