@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/practical-automata.iml" filepath="$PROJECT_DIR$/.idea/modules/practical-automata.iml" />
+      <module fileurl="file://$PROJECT_DIR$/practical-automata.iml" filepath="$PROJECT_DIR$/practical-automata.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/practical-automata_main.iml" filepath="$PROJECT_DIR$/.idea/modules/practical-automata_main.iml" group="practical-automata" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/practical-automata_test.iml" filepath="$PROJECT_DIR$/.idea/modules/practical-automata_test.iml" group="practical-automata" />
     </modules>

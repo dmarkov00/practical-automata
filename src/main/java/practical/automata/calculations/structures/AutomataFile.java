@@ -2,6 +2,7 @@ package practical.automata.calculations.structures;
 
 /**
  * Produced in as a result of parsing the state machine files
+ * Combination between the data parsed from the state machine and the data from the test vectors
  */
 public class AutomataFile {
     private StateMachine stateMachine;
