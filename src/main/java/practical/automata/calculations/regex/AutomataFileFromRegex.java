@@ -6,6 +6,7 @@ import practical.automata.calculations.utils.Utils;
 import practical.automata.models.AutomataFileFromRegexResult;
 import practical.automata.models.Regex;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class AutomataFileFromRegex {
@@ -58,8 +59,18 @@ public class AutomataFileFromRegex {
         return arrayTree[rootIndex].getTransitions();
     }
 
+    /**
+     * Generates result based on the operator and the passed left and right variables
+     */
     private List<String> extractTransitions(Node root, List<String> left, List<String> right) {
 
+        List<String> transitionsResult = new ArrayList<>();
+        char rootValue = root.getValue();
+
+        switch (rootValue) {
+            // check how to generate states
+        }
+        return null;
     }
 
 
