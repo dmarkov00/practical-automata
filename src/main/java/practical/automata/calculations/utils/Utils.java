@@ -1,6 +1,9 @@
 package practical.automata.calculations.utils;
 
+import practical.automata.calculations.regex.structures.Node;
+
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 /**
@@ -21,5 +24,10 @@ public class Utils {
         }
 
         return characterList;
+    }
+
+    public static boolean isOperator(Node node) {
+        List<Character> allowedOperators = Arrays.asList('.', '|', '*');
+        return allowedOperators.contains(node.getValue());
     }
 }
