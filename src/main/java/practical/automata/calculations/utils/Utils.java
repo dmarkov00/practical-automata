@@ -14,7 +14,7 @@ public class Utils {
     // Variables used for generating unique states for assignment 3
     private static int alphabetCharsCounter = -1;
     private static int statesIteration = 0; // if iteration is 1 for example the generated states become A1, B1 and so on
-    private char[] alphabet = "ABCDEFGHIJKLMNOPQSUVWXYZ".toCharArray(); // 24 chars without R and T
+    private static char[] alphabet = "ABCDEFGHIJKLMNOPQSUVWXYZ".toCharArray(); // 24 chars without R and T
 
     /**
      * Generates a list of alphabet letters
@@ -43,7 +43,6 @@ public class Utils {
             alphabetCharsCounter = -1; // Reset value
             statesIteration++; // Increase the number to append
         }
-
 
         alphabetCharsCounter++;
 
