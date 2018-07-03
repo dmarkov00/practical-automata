@@ -1,11 +1,13 @@
 package practical.automata.calculations.regex.structures;
 
+import practical.automata.calculations.structures.Transition;
+
 import java.util.List;
 
 public class Node {
 
     private char value;
-    private List<String> transitions;
+    private List<Transition> transitions;
 
     Node(char value) {
 
@@ -18,11 +20,11 @@ public class Node {
         return value;
     }
 
-    public List<String> getTransitions() {
+    public List<Transition> getTransitions() {
         return transitions;
     }
 
-    public void setTransitions(List<String> transitions) {
+    public void setTransitions(List<Transition> transitions) {
         this.transitions = transitions;
     }
 }

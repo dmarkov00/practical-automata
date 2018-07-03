@@ -12,6 +12,16 @@ public class StateMachine {
     private List<String> finalStates;
     private List<Transition> transitions;
 
+    public StateMachine() {
+    }
+
+    public StateMachine(String alphabet, List<String> states, List<String> finalStates, List<Transition> transitions) {
+        this.alphabet = alphabet;
+        this.states = states;
+        this.finalStates = finalStates;
+        this.transitions = transitions;
+    }
+
     public String getAlphabet() {
         return alphabet;
     }

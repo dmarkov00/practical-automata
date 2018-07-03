@@ -2,6 +2,8 @@ package practical.automata.calculations.regex;
 
 import practical.automata.calculations.regex.structures.Node;
 import practical.automata.calculations.regex.structures.RegexTree;
+import practical.automata.calculations.structures.StateMachine;
+import practical.automata.calculations.structures.Transition;
 import practical.automata.calculations.utils.Utils;
 import practical.automata.models.AutomataFileFromRegexResult;
 import practical.automata.models.Regex;
@@ -23,6 +25,13 @@ public class AutomataFileFromRegex {
 
     public AutomataFileFromRegexResult generateFile() {
 
+        Node[] arrayTree = regexTree.getArrayTree();
+
+        List<Transition> generatedTransiotions = generateTransitionsFromTree(0, arrayTree);
+
+        StateMachine stateMachine = new StateMachine();
+
+
         return null;
     }
 
@@ -31,27 +40,27 @@ public class AutomataFileFromRegex {
      *
      * @return A list of transitions strings that are later written to a file
      */
-    private List<String> generateTransitionsFromTree(int rootIndex, Node[] arrayTree) {
+    private List<Transition> generateTransitionsFromTree(int rootIndex, Node[] arrayTree) {
         if (!regexTree.nodeHasLeftChild(rootIndex) & !regexTree.nodeHasRightChild(rootIndex)) {
 
             return arrayTree[rootIndex].getTransitions();
         }
-        List<String> leftNandifiedValue;
-        List<String> rightNandifiedValue;
+        List<Transition> left;
+        List<Transition> right;
 
         if (!regexTree.nodeHasLeftChild(rootIndex)) {
-            leftNandifiedValue = null;
+            left = null;
         } else {
-            leftNandifiedValue = generateTransitionsFromTree(regexTree.getLeftChildIndex(rootIndex), arrayTree);
+            left = generateTransitionsFromTree(regexTree.getLeftChildIndex(rootIndex), arrayTree);
         }
         if (!regexTree.nodeHasRightChild(rootIndex)) {
-            rightNandifiedValue = null;
+            right = null;
         } else {
-            rightNandifiedValue = generateTransitionsFromTree(regexTree.getRightChildIndex(rootIndex), arrayTree);
+            right = generateTransitionsFromTree(regexTree.getRightChildIndex(rootIndex), arrayTree);
         }
 
         if (Utils.isOperator(arrayTree[rootIndex])) {
-            List<String> transitionsValue = extractTransitions(arrayTree[rootIndex], leftNandifiedValue, rightNandifiedValue);
+            List<Transition> transitionsValue = extractTransitions(arrayTree[rootIndex], left, right);
             arrayTree[rootIndex].setTransitions(transitionsValue);
 
             return transitionsValue;
@@ -59,15 +68,20 @@ public class AutomataFileFromRegex {
         return arrayTree[rootIndex].getTransitions();
     }
 
+
+    private String lastState = null; // used to track the most outer state of the state machine
+    private String firstState = null;
+    private String leftTransitionSymbol;
+    private String rightTransitionSymbol;
+
     /**
      * Generates result based on the operator and the passed left and right variables
      */
-    private List<String> extractTransitions(Node root, List<String> left, List<String> right) {
+    private List<Transition> extractTransitions(Node root, List<Transition> left, List<Transition> right) {
 
         List<String> transitionsResult = new ArrayList<>();
         char rootValue = root.getValue();
 
-        String lastState = null; // used to track the most outer state of the state machine
 
         switch (rootValue) {
 
@@ -75,6 +89,7 @@ public class AutomataFileFromRegex {
 
                 String stateOnePipe = Utils.generateUniqueState();
                 String stateTwoPipe = Utils.generateUniqueState();
+
 
                 transitionsResult.add(stateOnePipe + "," + left + "-->" + stateTwoPipe);
                 transitionsResult.add(stateTwoPipe + "," + right + "-->" + stateOnePipe);
@@ -96,10 +111,17 @@ public class AutomataFileFromRegex {
                 transitionsResult.add(stateOneDot + "," + left + "-->" + stateTwoDot);
                 transitionsResult.add(stateTwoDot + "," + right + "-->" + stateThreeDot);
             case '*':
+
+
                 String stateOneAsterisk = Utils.generateUniqueState();
                 String stateTwoAsterisk = Utils.generateUniqueState();
                 String stateThreeAsterisk = Utils.generateUniqueState();
                 String stateFourAsterisk = Utils.generateUniqueState();
+
+                if (lastState != null) {
+                    transitionsResult.add(lastState + "," + "_" + "-->" + stateOneAsterisk);
+                    transitionsResult.add(stateOneAsterisk + "," + "_" + "-->" + lastState);
+                }
 
                 transitionsResult.add(stateOneAsterisk + "," + "_" + "-->" + stateTwoAsterisk);
 
@@ -118,7 +140,6 @@ public class AutomataFileFromRegex {
                 }
 
                 return transitionsResult;
-
 
         }
         return null;

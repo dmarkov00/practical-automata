@@ -31,7 +31,7 @@ public class Utils {
     }
 
     public static boolean isOperator(Node node) {
-        List<Character> allowedOperators = Arrays.asList('.', '|', '*');
+        List<Character> allowedOperators = Arrays.asList('.', '*'); // TODO: add '|'
         return allowedOperators.contains(node.getValue());
     }
 
