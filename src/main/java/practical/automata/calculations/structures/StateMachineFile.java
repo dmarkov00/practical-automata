@@ -1,14 +1,14 @@
 package practical.automata.calculations.structures;
 
 /**
- * Produced in as a result of parsing the state machine files
- * Combination between the data parsed from the state machine and the data from the test vectors
+ * Produced in result of parsing the state machine files
+ * Combination between the data parsed from the automaton and the data from the test vectors
  */
-public class AutomataFile {
+public class StateMachineFile {
     private StateMachine stateMachine;
     private TestVector testVector;
 
-    public AutomataFile(StateMachine stateMachine, TestVector testVector) {
+    public StateMachineFile(StateMachine stateMachine, TestVector testVector) {
         this.stateMachine = stateMachine;
 
         this.testVector = testVector;

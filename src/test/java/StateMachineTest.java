@@ -1,7 +1,7 @@
 import org.junit.Test;
-import practical.automata.calculations.structures.AutomataFile;
+import practical.automata.calculations.structures.StateMachineFile;
 import practical.automata.calculations.structures.StateMachine;
-import practical.automata.calculations.utils.StateMachineFile;
+import practical.automata.calculations.utils.StateMachineFileReader;
 
 import static org.hamcrest.CoreMatchers.is;
 
@@ -11,11 +11,11 @@ public class StateMachineTest {
     @Test
     public void checkForDFA() {
 
-        StateMachineFile stateMachineFile = new StateMachineFile();
+        StateMachineFileReader stateMachineFileReader = new StateMachineFileReader();
 
-        AutomataFile automataFile = stateMachineFile.readAutomataFile();
+        StateMachineFile stateMachineFile = stateMachineFileReader.readStateMachineFile();
 
-        StateMachine stateMachine = automataFile.getStateMachine();
+        StateMachine stateMachine = stateMachineFile.getStateMachine();
 
         boolean isDFA = stateMachine.checkForDFA();
 
@@ -23,11 +23,11 @@ public class StateMachineTest {
 
     @Test
     public void isWordAccepted() {
-        StateMachineFile stateMachineFile = new StateMachineFile();
+        StateMachineFileReader stateMachineFileReader = new StateMachineFileReader();
 
-        AutomataFile automataFile = stateMachineFile.readAutomataFile();
+        StateMachineFile stateMachineFile = stateMachineFileReader.readStateMachineFile();
 
-        StateMachine stateMachine = automataFile.getStateMachine();
+        StateMachine stateMachine = stateMachineFile.getStateMachine();
 
         String testWord = "babaa";
 

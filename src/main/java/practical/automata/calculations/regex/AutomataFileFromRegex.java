@@ -139,7 +139,8 @@ public class AutomataFileFromRegex {
                     transitionsResult.add(stateTwoAsterisk + "," + right + "-->" + stateFourAsterisk);
                 }
 
-                return transitionsResult;
+//                return transitionsResult;
+                return null;
 
         }
         return null;

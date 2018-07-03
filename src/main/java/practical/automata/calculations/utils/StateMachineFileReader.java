@@ -1,6 +1,6 @@
 package practical.automata.calculations.utils;
 
-import practical.automata.calculations.structures.AutomataFile;
+import practical.automata.calculations.structures.StateMachineFile;
 import practical.automata.calculations.structures.StateMachine;
 import practical.automata.calculations.structures.TestVector;
 import practical.automata.calculations.structures.Transition;
@@ -10,14 +10,14 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.*;
 
-public class StateMachineFile {
+public class StateMachineFileReader {
     private StateMachine stateMachine = new StateMachine();
     private TestVector testVector = new TestVector();
 
     // Used to store the index of the line, and avoid repetitive looping
     private int lineIndex;
 
-    public AutomataFile readAutomataFile() {
+    public StateMachineFile readStateMachineFile() {
 
         List<String> fileLines = generateListWithFileLines();
 
@@ -27,7 +27,7 @@ public class StateMachineFile {
         // Set the the data inside the TestVector object
 //        extractTestVectorData(fileLines);
 
-        return new AutomataFile(stateMachine, testVector);
+        return new StateMachineFile(stateMachine, testVector);
     }
 
 

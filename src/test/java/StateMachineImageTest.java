@@ -1,16 +1,16 @@
 import org.junit.Test;
-import practical.automata.calculations.structures.AutomataFile;
-import practical.automata.calculations.utils.StateMachineFile;
+import practical.automata.calculations.structures.StateMachineFile;
+import practical.automata.calculations.utils.StateMachineFileReader;
 import practical.automata.calculations.utils.StateMachineImage;
 
 public class StateMachineImageTest {
 
     @Test
     public void generateImage() {
-        StateMachineFile stateMachineFile = new StateMachineFile();
+        StateMachineFileReader stateMachineFileReader = new StateMachineFileReader();
 
-        AutomataFile automataFile = stateMachineFile.readAutomataFile();
+        StateMachineFile stateMachineFile = stateMachineFileReader.readStateMachineFile();
 
-        StateMachineImage.generateImage(automataFile.getStateMachine());
+        StateMachineImage.generateImage(stateMachineFile.getStateMachine());
     }
 }
