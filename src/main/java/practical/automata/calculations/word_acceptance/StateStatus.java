@@ -1,4 +1,4 @@
-package practical.automata.calculations.structures;
+package practical.automata.calculations.word_acceptance;
 
 /**
  * Used as a backwards referral and store for previous state status in the isWordCalculated Method.(method logic specific)

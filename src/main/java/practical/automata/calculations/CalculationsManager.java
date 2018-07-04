@@ -3,6 +3,7 @@ package practical.automata.calculations;
 import practical.automata.calculations.indicate_dfa.DfaIndicator;
 import practical.automata.calculations.structures.StateMachineFile;
 import practical.automata.calculations.utils.StateMachineFileReader;
+import practical.automata.calculations.word_acceptance.WordAcceptance;
 
 
 /**
@@ -26,8 +27,13 @@ public class CalculationsManager {
         return dfaIndicator.checkForDFA();
     }
 
+    /**
+     * Check if the passed word is accepted by the state machine
+     */
     public boolean isWordAccepted(String word) {
+        WordAcceptance wordAcceptance = new WordAcceptance(stateMachineFile.getStateMachine());
 
+        return wordAcceptance.isWordAccepted(word);
 
     }
 
