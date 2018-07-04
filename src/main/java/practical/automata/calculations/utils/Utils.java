@@ -1,6 +1,6 @@
 package practical.automata.calculations.utils;
 
-import practical.automata.calculations.regex.structures.Node;
+import practical.automata.calculations.ndfa_from_regex.structures.Node;
 
 import java.util.ArrayList;
 import java.util.Arrays;

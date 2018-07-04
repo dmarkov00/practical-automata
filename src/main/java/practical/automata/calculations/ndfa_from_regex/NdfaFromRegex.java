@@ -1,29 +1,29 @@
-package practical.automata.calculations.regex;
+package practical.automata.calculations.ndfa_from_regex;
 
-import practical.automata.calculations.regex.structures.Node;
-import practical.automata.calculations.regex.structures.RegexTree;
+import practical.automata.calculations.ndfa_from_regex.structures.Node;
+import practical.automata.calculations.ndfa_from_regex.structures.RegexTree;
 import practical.automata.calculations.structures.StateMachine;
 import practical.automata.calculations.structures.Transition;
 import practical.automata.calculations.utils.Utils;
-import practical.automata.models.AutomataFileFromRegexResult;
+import practical.automata.models.NdfaFromRegexResult;
 import practical.automata.models.Regex;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class AutomataFileFromRegex {
+public class NdfaFromRegex {
 
     private RegexTree regexTree;
 
 
-    public AutomataFileFromRegex(Regex regex) {
+    public NdfaFromRegex(Regex regex) {
         RegexReader regexReader = new RegexReader();
 
         this.regexTree = regexReader.readRegex(regex);
 
     }
 
-    public AutomataFileFromRegexResult generateFile() {
+    public NdfaFromRegexResult generateFile() {
 
         Node[] arrayTree = regexTree.getArrayTree();
 

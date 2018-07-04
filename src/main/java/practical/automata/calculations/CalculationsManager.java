@@ -4,6 +4,7 @@ import practical.automata.calculations.indicate_dfa.DfaIndicator;
 import practical.automata.calculations.structures.StateMachineFile;
 import practical.automata.calculations.utils.StateMachineFileReader;
 import practical.automata.calculations.word_acceptance.WordAcceptance;
+import practical.automata.models.NdfaFromRegexResult;
 
 
 /**
@@ -35,6 +36,13 @@ public class CalculationsManager {
 
         return wordAcceptance.isWordAccepted(word);
 
+    }
+
+
+    public NdfaFromRegexResult generateNdfaFromRegex() {
+        // TODO: update the method to call the ndfa_from_regex package
+
+        return null;
     }
 
     private void InitializeValuesFromFile() {

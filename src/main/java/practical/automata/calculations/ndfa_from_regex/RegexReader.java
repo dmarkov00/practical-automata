@@ -1,6 +1,6 @@
-package practical.automata.calculations.regex;
+package practical.automata.calculations.ndfa_from_regex;
 
-import practical.automata.calculations.regex.structures.RegexTree;
+import practical.automata.calculations.ndfa_from_regex.structures.RegexTree;
 import practical.automata.models.Regex;
 
 import java.io.UnsupportedEncodingException;
@@ -27,7 +27,7 @@ public class RegexReader {
         return regexTree;
     }
 
-    // Read regex with recursion
+    // Read ndfa_from_regex with recursion
     private void readConvertedRegex(StringBuilder regex) {
         regexTree.addNode(regex.charAt(0));
 

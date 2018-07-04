@@ -1,4 +1,4 @@
-package practical.automata.calculations.regex.structures;
+package practical.automata.calculations.ndfa_from_regex.structures;
 
 public class RegexTree {
     private Node[] arrayTree = new Node[999999];
