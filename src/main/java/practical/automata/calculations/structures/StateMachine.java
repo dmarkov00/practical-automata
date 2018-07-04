@@ -15,12 +15,12 @@ public class StateMachine {
     public StateMachine() {
     }
 
-    public StateMachine(String alphabet, List<String> states, List<String> finalStates, List<Transition> transitions) {
-        this.alphabet = alphabet;
-        this.states = states;
-        this.finalStates = finalStates;
-        this.transitions = transitions;
-    }
+//    public StateMachine(String alphabet, List<String> states, List<String> finalStates, List<Transition> transitions) {
+//        this.alphabet = alphabet;
+//        this.states = states;
+//        this.finalStates = finalStates;
+//        this.transitions = transitions;
+//    }
 
     public String getAlphabet() {
         return alphabet;
@@ -54,39 +54,7 @@ public class StateMachine {
         this.transitions = transitions;
     }
 
-    public boolean checkForDFA() {
 
-        List<String> uniqueTransitions = new ArrayList<>();
-
-        List<String> alphabet = Utils.convertStringToListOfStringCharacters(this.alphabet);
-
-        boolean isDFA = false;
-
-        for (String state : states) {
-            for (Transition transition : getTransitions()) {
-                if (state.equals(transition.getStateOne())) {
-
-                    // If there is an epsilon transition the state machine is not a DFA
-                    if (transition.getTransitionSymbol().equals("_")) {
-                        return false;
-                    }
-                    // The transition symbols can not be repeated in order to have a DFA
-                    if (!uniqueTransitions.contains(transition.getTransitionSymbol())) {
-                        uniqueTransitions.add(transition.getTransitionSymbol());
-                    } else {
-                        return false;
-                    }
-
-                }
-            }
-            // If the two collections have equal values, DFA is valid for the current state
-            isDFA = alphabet.containsAll(uniqueTransitions);
-
-            uniqueTransitions = new ArrayList<>();
-        }
-
-        return isDFA;
-    }
 
     private Stack<StateStatus> previousStates = new Stack<>();
 
