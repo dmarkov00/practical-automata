@@ -1,4 +1,4 @@
-package practical.automata.calculations.finite;
+package practical.automata.calculations.indicate_finite;
 
 import practical.automata.calculations.structures.StateMachine;
 import practical.automata.calculations.structures.StateMachineFile;
@@ -6,9 +6,7 @@ import practical.automata.calculations.structures.Transition;
 import practical.automata.calculations.utils.StateMachineFileReader;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 public class FiniteIndicator {
 
@@ -23,6 +21,7 @@ public class FiniteIndicator {
 
         return generateWords(states);
     }
+
 
     /**
      * Converts a StateMachine object into a list of State objects, the State object is setup in a way suitable for the word generation algorithm
@@ -44,6 +43,16 @@ public class FiniteIndicator {
         return null;
     }
 
+    private List<String> generateWords(List<State> states) {
+        // We begin with the initial state of the automaton
+        List<State> focusStates = new ArrayList<>();
+
+        focusStates.add(states.get(0));
+        for(State state: states){
+
+        }
+        return null;
+    }
 
 
     private List<State> generateNewFocuStates(List<State> focusStates) {

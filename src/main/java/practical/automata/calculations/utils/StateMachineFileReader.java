@@ -17,6 +17,7 @@ public class StateMachineFileReader {
     // Used to store the index of the line, and avoid repetitive looping
     private int lineIndex;
 
+
     public StateMachineFile readStateMachineFile() {
 
         List<String> fileLines = generateListWithFileLines();
@@ -31,6 +32,9 @@ public class StateMachineFileReader {
     }
 
 
+    /**
+     * Gets a string transition line as an input and returns an object
+     */
     private Transition extractTransition(String line) {
         String stateOne = null;
         String stateTwo = null;
@@ -54,7 +58,9 @@ public class StateMachineFileReader {
         return new Transition(transitionSymbol, stateOne, stateTwo);
     }
 
-
+    /**
+     * Gets all the states and fills them into a list, by only taking the uppercase symbols
+     */
     private List<String> extractStates(String line) {
         List<String> extractedStates = new ArrayList<>();
 
@@ -68,9 +74,14 @@ public class StateMachineFileReader {
         return extractedStates;
     }
 
+    /**
+     * Reads every line from the file and inserts it into a list of strings
+     *
+     * @return list of string file lines
+     */
     private List<String> generateListWithFileLines() {
 
-        String FILE_PATH = "./test.txt";
+        String FILE_PATH = "./test.txt"; // The path is always the same just the file is replaced when a new one is read
 
         Scanner sc = null;
         try {
@@ -99,7 +110,7 @@ public class StateMachineFileReader {
 
                 testVector.setDFA(extractValueAfterColon(fileLines.get(testVectorLineIndex)));
 
-            } else if (fileLines.get(testVectorLineIndex).contains("finite")) {
+            } else if (fileLines.get(testVectorLineIndex).contains("indicate_finite")) {
                 testVector.setFinite(extractValueAfterColon(fileLines.get(testVectorLineIndex)));
 
                 // If the line contains a come it means that is part of words in the test vectors
@@ -114,6 +125,9 @@ public class StateMachineFileReader {
         testVector.setWords(wordAndResultMap);
     }
 
+    /**
+     * Gets the data from the state machine like alphabet, states... and extracts transitions until it reaches the "end" keyword
+     */
     private void extractStateMachineData(List<String> fileLines) {
         List<Transition> transitions = new ArrayList<>();
 

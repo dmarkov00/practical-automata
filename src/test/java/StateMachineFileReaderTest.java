@@ -60,10 +60,10 @@ public class StateMachineFileReaderTest {
         // Test for correctly retrieved DFA
         assertThat(testVector.isDFA(), is("n"));
 
-        // Test for correctly retrieved finite
+        // Test for correctly retrieved indicate_finite
         assertThat(testVector.isFinite(), is("n"));
 
-        // Test for correctly retrieved finite
+        // Test for correctly retrieved indicate_finite
         Map<String, String> words = new HashMap<>();
         words.put("bbbbbbbbbb", "y");
         words.put("a", "y");

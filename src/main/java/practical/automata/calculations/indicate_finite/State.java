@@ -1,6 +1,5 @@
-package practical.automata.calculations.finite;
+package practical.automata.calculations.indicate_finite;
 
-import java.util.ArrayList;
 import java.util.List;
 
 /**
