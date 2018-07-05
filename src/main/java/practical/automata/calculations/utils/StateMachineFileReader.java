@@ -14,7 +14,7 @@ public class StateMachineFileReader {
     private StateMachine stateMachine = new StateMachine();
     private TestVector testVector = new TestVector();
 
-    public static String filePath = "./test.txt"; // Easily accessible file path, that can be set from outside
+    public static String filePath = "./file.txt"; // Easily accessible file path, that can be set from outside
     // Used to store the index of the line, and avoid repetitive looping
     private int lineIndex;
 

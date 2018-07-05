@@ -8,7 +8,7 @@ import static org.junit.Assert.assertTrue;
 
 public class WordAcceptanceTest {
     private CalculationsManager calculationsManager = new CalculationsManager(null);
-
+// TODO: retrieve stuff from the test vectors
     @Test
     public void areWordsAcceptedTestFile1() {
         String testWordThatShouldBeAccepted = "baab";

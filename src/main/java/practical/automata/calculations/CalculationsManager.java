@@ -1,6 +1,7 @@
 package practical.automata.calculations;
 
 import practical.automata.calculations.indicate_dfa.DfaIndicator;
+import practical.automata.calculations.ndfa_to_dfa.NdfaToDfaConverter;
 import practical.automata.calculations.structures.StateMachineFile;
 import practical.automata.calculations.utils.StateMachineFileReader;
 import practical.automata.calculations.word_acceptance.WordAcceptance;
@@ -43,6 +44,13 @@ public class CalculationsManager {
         // TODO: update the method to call the ndfa_from_regex package
 
         return null;
+    }
+
+    public void convertNdfaToDfa() {
+        NdfaToDfaConverter ndfaToDfaConverter = new NdfaToDfaConverter(stateMachineFile.getStateMachine());
+
+        ndfaToDfaConverter.convertNdfaToDfa();
+
     }
 
     public void InitializeValuesFromFile(String filePath) {
