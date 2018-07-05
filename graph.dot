@@ -7,6 +7,7 @@ rankdir=LR;
 "B" [shape=doublecircle]
 "" -> "Z"
 "Z" -> "A"[label="a"] 
+"Z" -> "Z"[label="b"] 
 "A" -> "Z"[label="b"] 
 "A" -> "B"[label="a"] 
 "B" -> "B"[label="b"] 
