@@ -45,7 +45,7 @@ public class CalculationsManager {
         return null;
     }
 
-    private void InitializeValuesFromFile(String filePath) {
+    public void InitializeValuesFromFile(String filePath) {
 
 
         StateMachineFileReader stateMachineFileReader = new StateMachineFileReader();

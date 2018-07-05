@@ -11,27 +11,27 @@ public class StateMachineTest {
     @Test
     public void checkForDFA() {
 
-        StateMachineFileReader stateMachineFileReader = new StateMachineFileReader();
-
-        StateMachineFile stateMachineFile = stateMachineFileReader.readStateMachineFile();
-
-        StateMachine stateMachine = stateMachineFile.getStateMachine();
-
-        boolean isDFA = stateMachine.checkForDFA();
+//        StateMachineFileReader stateMachineFileReader = new StateMachineFileReader();
+//
+//        StateMachineFile stateMachineFile = stateMachineFileReader.readStateMachineFile();
+//
+//        StateMachine stateMachine = stateMachineFile.getStateMachine();
+//
+//        boolean isDFA = stateMachine.checkForDFA();
 
     }
 
     @Test
     public void isWordAccepted() {
-        StateMachineFileReader stateMachineFileReader = new StateMachineFileReader();
-
-        StateMachineFile stateMachineFile = stateMachineFileReader.readStateMachineFile();
-
-        StateMachine stateMachine = stateMachineFile.getStateMachine();
-
-        String testWord = "babaa";
-
-        boolean isAccepted = stateMachine.isWordAccepted(testWord);
+//        StateMachineFileReader stateMachineFileReader = new StateMachineFileReader();
+//
+//        StateMachineFile stateMachineFile = stateMachineFileReader.readStateMachineFile();
+//
+//        StateMachine stateMachine = stateMachineFile.getStateMachine();
+//
+//        String testWord = "babaa";
+//
+//        boolean isAccepted = stateMachine.isWordAccepted(testWord);
 
     }
 }
