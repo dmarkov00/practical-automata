@@ -41,7 +41,10 @@ public class DfaIndicator {
                 }
             }
             // If the two collections have equal values, DFA is valid for the current state
-            isDFA = alphabet.containsAll(uniqueTransitions);
+            isDFA = uniqueTransitions.containsAll(alphabet);
+            if (!isDFA) {
+                return false;
+            }
 
             uniqueTransitions = new ArrayList<>();
         }
