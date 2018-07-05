@@ -14,6 +14,7 @@ public class StateMachineFileReader {
     private StateMachine stateMachine = new StateMachine();
     private TestVector testVector = new TestVector();
 
+    public static String filePath = "./test.txt"; // Easily accessible file path, that can be set from outside
     // Used to store the index of the line, and avoid repetitive looping
     private int lineIndex;
 
@@ -31,6 +32,30 @@ public class StateMachineFileReader {
         return new StateMachineFile(stateMachine, testVector);
     }
 
+    /**
+     * Reads every line from the file and inserts it into a list of strings
+     *
+     * @return list of string file lines
+     */
+    private List<String> generateListWithFileLines() {
+
+//        String FILE_PATH = "./test.txt"; // The path is always the same just the file is replaced when a new one is read
+        String FILE_PATH = filePath;
+
+        Scanner sc = null;
+        try {
+            sc = new Scanner(new File(FILE_PATH));
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
+        List<String> lines = new ArrayList<String>();
+        while (sc.hasNextLine()) {
+            lines.add(sc.nextLine());
+        }
+        sc.close();
+
+        return lines;
+    }
 
     /**
      * Gets a string transition line as an input and returns an object
@@ -74,29 +99,6 @@ public class StateMachineFileReader {
         return extractedStates;
     }
 
-    /**
-     * Reads every line from the file and inserts it into a list of strings
-     *
-     * @return list of string file lines
-     */
-    private List<String> generateListWithFileLines() {
-
-        String FILE_PATH = "./test.txt"; // The path is always the same just the file is replaced when a new one is read
-
-        Scanner sc = null;
-        try {
-            sc = new Scanner(new File(FILE_PATH));
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        }
-        List<String> lines = new ArrayList<String>();
-        while (sc.hasNextLine()) {
-            lines.add(sc.nextLine());
-        }
-        sc.close();
-
-        return lines;
-    }
 
     private void extractTestVectorData(List<String> fileLines) {
 

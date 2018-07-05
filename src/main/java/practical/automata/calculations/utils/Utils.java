@@ -17,7 +17,7 @@ public class Utils {
     private static char[] alphabet = "ABCDEFGHIJKLMNOPQSUVWXYZ".toCharArray(); // 24 chars without R and T
 
     /**
-     * Generates a list of alphabet letters
+     * Generates a list of alphabet letters - i.e. from "asd" to [a,s,d]
      */
     public static List<String> convertStringToListOfStringCharacters(String stringWord) {
         List<String> characterList = new ArrayList<>();

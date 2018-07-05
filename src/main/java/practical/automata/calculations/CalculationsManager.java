@@ -13,8 +13,8 @@ import practical.automata.models.NdfaFromRegexResult;
  */
 public class CalculationsManager {
 
-    public CalculationsManager() {
-        InitializeValuesFromFile();
+    public CalculationsManager(String filePath) {
+        InitializeValuesFromFile(filePath);
     }
 
     private StateMachineFile stateMachineFile;
@@ -45,9 +45,13 @@ public class CalculationsManager {
         return null;
     }
 
-    private void InitializeValuesFromFile() {
+    private void InitializeValuesFromFile(String filePath) {
+
 
         StateMachineFileReader stateMachineFileReader = new StateMachineFileReader();
+        if (filePath != null) {
+            StateMachineFileReader.filePath = filePath;
+        }
 
         // Reads the file from the system and generates StateMachineFile object
         this.stateMachineFile = stateMachineFileReader.readStateMachineFile();
