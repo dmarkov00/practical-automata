@@ -19,12 +19,12 @@ public class StateStatus {
     }
 
 
-    public int getTransitionIndex() {
+    int getTransitionIndex() {
         return transitionIndex;
     }
 
 
-    public StringBuilder getWord() {
+    StringBuilder getWord() {
         return word;
     }
 

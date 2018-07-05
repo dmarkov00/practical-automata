@@ -14,28 +14,36 @@ public class WordAcceptance {
 
     private StateMachine stateMachine;
 
+    // Stores states in case the algorithm needs to go back in the state machine graph
     private Stack<StateStatus> previousStates = new Stack<>();
 
-
-    // We start looping from the first state
     private String focusState;
 
     private StringBuilder word;
 
     private int currentTransitionIndex = 0;
 
+    /**
+     * The main method that goes through all states and checks if a words is accepted
+     */
     public boolean isWordAccepted(String inputWord) {
 
+        // Start looping from the first state
         focusState = stateMachine.getStates().get(0);
 
+        // Use transitions as a pointer when to stop looping
         int transitionsCount = stateMachine.getTransitions().size();
 
+        // Start from the test input word and gradually remove characters until they are all removed and word is accepted
         word = new StringBuilder(inputWord);
 
         while (currentTransitionIndex < transitionsCount) {
 
             Transition transition = stateMachine.getTransitions().get(currentTransitionIndex);
 
+
+            // Check if the first symbol of the passed word is equal the transition symbol of the transition
+            // && if the focus state is equal to the first state of the transition
             if ((word.charAt(0) + "").equals(transition.getTransitionSymbol()) && focusState.equals(transition.getStateOne())) {
 
 //                if(transition.getStateOne().equals(transition.getStateTwo())){
@@ -52,7 +60,7 @@ public class WordAcceptance {
                 // Remove a character from the word
                 word.deleteCharAt(0);
 
-                currentTransitionIndex = 0;
+                currentTransitionIndex = 0; // Start looping all transition from the beginning
 
                 if (word.length() == 0 && stateMachine.getFinalStates().contains(focusState)) {
                     return true;
@@ -66,7 +74,7 @@ public class WordAcceptance {
             currentTransitionIndex++;
 
             // Going one state back
-            // If we checked all transition and could find a path to continue
+            // If we checked all transition and couldn't find a path to continue
             if ((currentTransitionIndex == transitionsCount)) {
                 goOneStateBack();
 
@@ -78,6 +86,9 @@ public class WordAcceptance {
 
     }
 
+    /**
+     * Pops a state from the stack and sets tha values it has to the class variables
+     */
     private void goOneStateBack() {
         if (previousStates.empty()) {
             return;
