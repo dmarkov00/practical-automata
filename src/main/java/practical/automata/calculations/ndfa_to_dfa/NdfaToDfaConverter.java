@@ -2,7 +2,6 @@ package practical.automata.calculations.ndfa_to_dfa;
 
 import practical.automata.calculations.structures.StateMachine;
 import practical.automata.calculations.structures.Transition;
-import practical.automata.calculations.utils.StateMachineImage;
 import practical.automata.calculations.utils.Utils;
 
 import java.util.ArrayList;
@@ -31,7 +30,7 @@ public class NdfaToDfaConverter {
 
     private List<ConverterTableRow> generateConverterTableRows() {
         List<ConverterTableRow> tableRows = new ArrayList<>();
-
+        this.convertStatesIntoListOfStates();
 
         for (List<String> state : states) {
 
@@ -75,7 +74,6 @@ public class NdfaToDfaConverter {
                 this.states.add(correlationState);
 
             }
-
 
         }
         return tableRows;

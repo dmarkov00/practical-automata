@@ -8,6 +8,9 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import practical.automata.calculations.ndfa_from_regex.NdfaFromRegex;
 
+/**
+ * TODO: create endpoints for each assignment and connect it to the front-end
+ */
 public class AutomataController {
 
     // TODO: update the logic to go through the CalculationsManager class

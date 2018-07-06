@@ -1,3 +1,5 @@
+package utils;
+
 import static org.junit.Assert.*;
 
 import org.junit.Test;
@@ -15,12 +17,6 @@ import java.util.Map;
 import static org.hamcrest.CoreMatchers.is;
 
 public class StateMachineFileReaderTest {
-
-    /**
-     * TODO: When you setup the file sending via the api endpoint - mock it with files contained in the test resources
-     * TODO: Link how to access them https://stackoverflow.com/questions/3891375/how-to-read-a-text-file-resource-into-java-unit-test?utm_medium=organic&utm_source=google_rich_qa&utm_campaign=google_rich_qa
-     * To run with multiple different files just rename the one that is under test to be  = test.txt
-     */
 
     @Test
     public void readAutomataFile() {

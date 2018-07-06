@@ -8,7 +8,6 @@ import java.io.UnsupportedEncodingException;
 public class RegexReader {
 
     private RegexTree regexTree;
-    public static String parsedRegexString;
 
     public RegexReader() {
         this.regexTree = new RegexTree();
@@ -72,7 +71,7 @@ public class RegexReader {
         // Remove spaces
         String trimmedRegex = parsedRegex.replaceAll("\\s", "");
 
-        if (isFormulaCorrectlyFormatted(trimmedRegex)) {
+        if (isRegexCorrectlyFormatted(trimmedRegex)) {
             return new StringBuilder(trimmedRegex);
 
         } else return null;
@@ -81,9 +80,9 @@ public class RegexReader {
     /**
      * Checks if the regular expression meets the requirements by using another regular expression
      */
-    private boolean isFormulaCorrectlyFormatted(String formulaStr) {
+    private boolean isRegexCorrectlyFormatted(String regexStr) {
 
-        return formulaStr.matches("[a-zA-Z()*|._,]+");
+        return regexStr.matches("[a-zA-Z()*|._,]+");
     }
 
 }

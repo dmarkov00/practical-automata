@@ -148,7 +148,7 @@ public class NdfaFromRegex {
 
 
     public void writeResultToFile(List<String> generatedTransitions) {
-
+        // TODO
     }
 
 
