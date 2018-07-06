@@ -1,11 +1,14 @@
 package practical.automata.calculations;
 
 import practical.automata.calculations.indicate_dfa.DfaIndicator;
+import practical.automata.calculations.indicate_finite.FiniteIndicator;
 import practical.automata.calculations.ndfa_to_dfa.NdfaToDfaConverter;
 import practical.automata.calculations.structures.StateMachineFile;
 import practical.automata.calculations.utils.StateMachineFileReader;
 import practical.automata.calculations.word_acceptance.WordAcceptance;
 import practical.automata.models.NdfaFromRegexResult;
+
+import java.util.List;
 
 
 /**
@@ -39,6 +42,15 @@ public class CalculationsManager {
 
     }
 
+    /**
+     * Indicates if the file is finite returns words, otherwise null
+     */
+    public List<String> indicateFinite() {
+        FiniteIndicator finiteIndicator = new FiniteIndicator();
+
+        return finiteIndicator.indicateFinite(stateMachineFile.getStateMachine());
+    }
+
 
     public NdfaFromRegexResult generateNdfaFromRegex() {
         // TODO: update the method to call the ndfa_from_regex package
@@ -52,6 +64,7 @@ public class CalculationsManager {
         ndfaToDfaConverter.convertNdfaToDfa();
 
     }
+
 
     public void InitializeValuesFromFile(String filePath) {
 

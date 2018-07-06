@@ -18,6 +18,9 @@ import static org.hamcrest.CoreMatchers.is;
 
 public class StateMachineFileReaderTest {
 
+    /**
+     * This test was passing but I lost, the file I used to test it with
+     */
     @Test
     public void readAutomataFile() {
 

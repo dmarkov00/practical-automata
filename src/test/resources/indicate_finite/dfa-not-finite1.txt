@@ -1,0 +1,27 @@
+# comments
+
+alphabet: ab
+states: Z,A,B
+final: A,B
+
+transitions:
+Z,a --> A
+Z,b --> B
+A,a --> A
+A,b --> B 
+B,a --> Z
+B,b --> B 
+end.
+
+dfa: y
+finite: n
+
+words:
+a,y
+b,y
+aaaaaa,y
+ab,y
+abb,y
+abbaa,y
+abba,n
+end.

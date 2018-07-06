@@ -1,33 +1,30 @@
 package practical.automata.calculations.indicate_finite;
 
 import practical.automata.calculations.structures.StateMachine;
-import practical.automata.calculations.structures.StateMachineFile;
+
 import practical.automata.calculations.structures.Transition;
-import practical.automata.calculations.utils.StateMachineFileReader;
+
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class FiniteIndicator {
 
-    public List<String> indicateFinite() {
-
-        // First, read the latest file in the system and return the read data
-        StateMachineFileReader stateMachineFileReader = new StateMachineFileReader();
-        StateMachineFile stateMachineFile = stateMachineFileReader.readStateMachineFile();
-
-        List<State> states = generateStateData(stateMachineFile.getStateMachine());
+    public List<String> indicateFinite(StateMachine stateMachine) {
 
 
-        return generateWords(states);
+        this.stateMachine = stateMachine;
+
+        return generateWords();
     }
 
+    private StateMachine stateMachine;
 
     /**
      * Converts a StateMachine object into a list of State objects, the State object is setup in a way suitable for the word generation algorithm
      */
     private List<State> generateStateData(StateMachine stateMachine) {
-//        List
+        //TODO Generate states data and fill in the  List<State> object
 
         for (String state : stateMachine.getStates()) {
 
@@ -43,18 +40,22 @@ public class FiniteIndicator {
         return null;
     }
 
-    private List<String> generateWords(List<State> states) {
-        // We begin with the initial state of the automaton
-        List<State> focusStates = new ArrayList<>();
-
-        focusStates.add(states.get(0));
-        for(State state: states){
-
-        }
+    private List<String> generateWords() {
+        //TODO pass as a list of states properly
+//        List<State> states = null;
+//        // We begin with the initial state of the automaton
+//        List<State> focusStates = new ArrayList<>();
+//
+////        focusStates.add(states.get(0));
+//        for (State state : states) {
+//
+//        }
         return null;
     }
 
-
+    /**
+     *
+     */
     private List<State> generateNewFocuStates(List<State> focusStates) {
 
         List<State> newFocusStates = new ArrayList<>();

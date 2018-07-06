@@ -1,0 +1,34 @@
+# comments
+
+alphabet: abc
+states: A,B,C,D,E
+final: D,B
+
+transitions:
+A,a --> B
+A,b --> B
+A,c --> C
+B,b --> D 
+B,a --> C
+B,C --> E
+C,a --> D
+C,b --> D
+C,c --> E
+D,a --> D
+D,b --> C
+D,c --> C
+E,a --> D
+E,b --> B
+E,c --> A
+end.
+
+dfa: y
+finite: n
+
+words:
+a,y
+b,y
+c,n
+ab,y
+ac,n
+end.
