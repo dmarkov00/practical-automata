@@ -51,7 +51,7 @@ public class StateMachineImage {
             e.printStackTrace();
         }
         try {
-            Process p = Runtime.getRuntime().exec("dot -Tpng -ograph.png graph.dot");
+            Process p = Runtime.getRuntime().exec("dot.exe -Tpng -ograph.png graph.dot");
             try {
                 p.waitFor();
             } catch (InterruptedException e) {

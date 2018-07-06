@@ -8,7 +8,7 @@ import static org.junit.Assert.assertTrue;
 
 public class WordAcceptanceTest {
     private CalculationsManager calculationsManager = new CalculationsManager(null);
-// TODO: retrieve stuff from the test vectors
+// TODO: retrieve data from the test vectors
     @Test
     public void areWordsAcceptedTestFile1() {
         String testWordThatShouldBeAccepted = "baab";
@@ -17,7 +17,7 @@ public class WordAcceptanceTest {
 
         boolean isAccepted;
         // Set the file we want to test with
-        calculationsManager.InitializeValuesFromFile("./src/test/resources/word_acceptance/test-file1.txt");
+        calculationsManager.initializeValuesFromFile("./src/test/resources/word_acceptance/test-file1.txt");
 
         isAccepted = calculationsManager.isWordAccepted(testWordThatShouldBeAccepted);
         assertTrue(isAccepted);

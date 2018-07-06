@@ -18,7 +18,7 @@ public class DfaIndicatorTest {
     @Test
     public void checkForDfaWithDfaTestFile() {
         // Set the file we want to test with
-        calculationsManager.InitializeValuesFromFile("./src/test/resources/indicate_dfa/dfa-state-machine.txt");
+        calculationsManager.initializeValuesFromFile("./src/test/resources/indicate_dfa/dfa-state-machine.txt");
 
         boolean isDFA = calculationsManager.indicateDFA();
 
@@ -31,7 +31,7 @@ public class DfaIndicatorTest {
     @Test
     public void checkForDfaWithNdfaWithEmptyTransitionsTestFile() {
         // Set the file we want to test with
-        calculationsManager.InitializeValuesFromFile("./src/test/resources/indicate_dfa/ndfa-state-machine-with-empty-transition.txt");
+        calculationsManager.initializeValuesFromFile("./src/test/resources/indicate_dfa/ndfa-state-machine-with-empty-transition.txt");
 
         boolean isDFA = calculationsManager.indicateDFA();
 
@@ -43,7 +43,7 @@ public class DfaIndicatorTest {
     @Test
     public void checkForDfaWithNdfaTestFile() {
         // Set the file we want to test with
-        calculationsManager.InitializeValuesFromFile("./src/test/resources/indicate_dfa/ndfa-state-machine.txt");
+        calculationsManager.initializeValuesFromFile("./src/test/resources/indicate_dfa/ndfa-state-machine.txt");
 
         boolean isDFA = calculationsManager.indicateDFA();
 

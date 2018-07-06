@@ -17,7 +17,7 @@ public class FiniteIndicatorTest {
     public void indicateFiniteWithNotFiniteFile1() {
 
         // Set the file we want to test with
-        calculationsManager.InitializeValuesFromFile("./src/test/resources/indicate_finite/dfa-not-finite1.txt");
+        calculationsManager.initializeValuesFromFile("./src/test/resources/indicate_finite/dfa-not-finite1.txt");
 
         // The method should be retuning a null when the automaton is not finite
         List<String> generatedWords = calculationsManager.indicateFinite();
@@ -30,7 +30,7 @@ public class FiniteIndicatorTest {
     public void indicateFiniteWithNotFiniteFile2() {
 
         // Set the file we want to test with
-        calculationsManager.InitializeValuesFromFile("./src/test/resources/indicate_finite/dfa-not-finite2.txt");
+        calculationsManager.initializeValuesFromFile("./src/test/resources/indicate_finite/dfa-not-finite2.txt");
 
         // The method should be retuning a null when the automaton is not finite
         List<String> generatedWords = calculationsManager.indicateFinite();
@@ -43,7 +43,7 @@ public class FiniteIndicatorTest {
     public void indicateFiniteWithNotFiniteFile3() {
 
         // Set the file we want to test with
-        calculationsManager.InitializeValuesFromFile("./src/test/resources/indicate_finite/dfa-not-finite3.txt");
+        calculationsManager.initializeValuesFromFile("./src/test/resources/indicate_finite/dfa-not-finite3.txt");
 
         // The method should be retuning a null when the automaton is not finite
         List<String> generatedWords = calculationsManager.indicateFinite();
@@ -56,7 +56,7 @@ public class FiniteIndicatorTest {
     public void indicateFiniteWithFiniteAutomatonFile1() {
 
         // Set the file we want to test with
-        calculationsManager.InitializeValuesFromFile("./src/test/resources/indicate_finite/not-dfa-finite.txt");
+        calculationsManager.initializeValuesFromFile("./src/test/resources/indicate_finite/not-dfa-finite.txt");
 
         // The method should be retuning a null when the automaton is not finite
         List<String> generatedWords = calculationsManager.indicateFinite();

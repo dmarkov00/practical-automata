@@ -18,10 +18,10 @@ import java.util.List;
 public class CalculationsManager {
 
     public CalculationsManager(String filePath) {
-        InitializeValuesFromFile(filePath);
+        initializeValuesFromFile(filePath);
     }
 
-    private StateMachineFile stateMachineFile;
+    public StateMachineFile stateMachineFile;
 
     /**
      * Checks if a the read state machine is a dfa
@@ -52,7 +52,7 @@ public class CalculationsManager {
     }
 
 
-    public NdfaFromRegexResult generateNdfaFromRegex() {
+    public NdfaFromRegexResult generateNdfaFromRegex(String regex) {
         // TODO: update the method to call the ndfa_from_regex package
 
         return null;
@@ -66,7 +66,7 @@ public class CalculationsManager {
     }
 
 
-    public void InitializeValuesFromFile(String filePath) {
+    public void initializeValuesFromFile(String filePath) {
 
 
         StateMachineFileReader stateMachineFileReader = new StateMachineFileReader();

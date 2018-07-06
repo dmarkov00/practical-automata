@@ -5,12 +5,13 @@ import practical.automata.calculations.CalculationsManager;
 
 
 public class NdfaToDfaConverterTest {
-    CalculationsManager calculationsManager = new CalculationsManager(null);
+   private CalculationsManager calculationsManager = new CalculationsManager(null);
 
     @Test
-    public void testing() {
+    public void convertToDfaSuccessfully() {
         calculationsManager.convertNdfaToDfa();
 
+        //TODO
     }
 
 }
